@@ -1,12 +1,54 @@
-# React + Vite
+# Netflix Clone 🎬
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A stunning Netflix clone application built with **ReactJS** and **Firebase**. Stream your favorite movies and TV shows with a sleek, modern UI inspired by Netflix.
 
-Currently, two official plugins are available:
+## 🚀 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- User authentication (Sign up / Sign in)
+- Browse trending movies & TV shows
+- Add to My List (favorites)
+- Responsive design for all devices
+- Real-time database with Firebase
+- Smooth navigation and transitions
 
-## Expanding the ESLint configuration
+## 🛠️ Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **Frontend:** ReactJS, CSS, Axios
+- **Backend:** Firebase Authentication, Firestore Database, Firebase Hosting
+- **API:** [The Movie Database (TMDb)](https://www.themoviedb.org/documentation/api)
+
+
+## 🔥 Getting Started
+
+1. **Clone the repo:**
+    ```bash
+    git clone https://github.com/shamveelp/netflix-clone.git
+    cd netflix-clone
+    ```
+
+2. **Install dependencies:**
+    ```bash
+    npm install
+    ```
+
+3. **Set up Firebase:**
+    - Create a Firebase project at [Firebase Console](https://console.firebase.google.com/)
+    - Add your Firebase config to `.env`
+
+
+
+
+## 🙌 Credits
+
+- Inspired by [Netflix](https://netflix.com)
+- Movie data from [TMDb](https://www.themoviedb.org/)
+
+## 📄 License
+
+This project is for educational purposes only.
+
+---
+
+Made with ❤️ using ReactJS & Firebase.
+
+~ Shamveel P | Coding Aashan
