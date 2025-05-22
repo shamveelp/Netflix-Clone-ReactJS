@@ -1,0 +1,150 @@
+.title-cards {
+  margin-top: 50px;
+  margin-bottom: 30px;
+}
+
+.title-cards h2 {
+  margin-bottom: 8px;
+}
+
+.card-list {
+  display: flex;
+  gap: 15px; /* Increased gap for spacing */
+  overflow-x: scroll;
+  padding: 10px 0; /* Padding to prevent edge clipping */
+}
+
+.card-list::-webkit-scrollbar {
+  display: none;
+}
+
+.card-list .card {
+  position: relative;
+  width: 240px; /* Fixed width */
+  flex-shrink: 0; /* Prevent cards from shrinking */
+  transition: transform 0.3s ease, z-index 0.3s ease;
+  z-index: 1;
+}
+
+.card-list .card:hover {
+  transform: scale(1.15) translateY(-10px); /* Smaller scale + lift to avoid congestion */
+  z-index: 10; /* Ensure hovered card is on top */
+}
+
+.card-list .card img {
+  width: 240px;
+  height: 135px; /* Standard height */
+  object-fit: cover; /* Ensure images fit nicely */
+  border-radius: 4px;
+  cursor: pointer;
+  display: block;
+}
+
+/* Always-visible title styling */
+.card-title {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 8px 10px;
+  background: rgba(0, 0, 0, 0.6); /* Semi-transparent for readability */
+  color: white;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+  transition: opacity 0.3s ease; /* Smooth hide on hover */
+}
+
+/* Hide card-title on hover */
+.card:hover .card-title {
+  opacity: 0;
+}
+
+.card-title h3 {
+  margin: 0;
+  font-size: 14px; /* Smaller font for fit */
+  font-weight: bold;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; /* Handle long titles */
+}
+
+/* Hover overlay styling (matches original) */
+.card-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.35); /* Matches original */
+  color: white;
+  opacity: 0;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  border-radius: 4px;
+  transition: opacity 0.3s ease;
+}
+
+.card:hover .card-overlay {
+  opacity: 1;
+}
+
+.card-overlay h3 {
+  margin: 0;
+  font-size: 16px; /* Matches original */
+  font-weight: bold;
+}
+
+.card-overlay p {
+  margin: 5px 0 10px;
+  font-size: 14px; /* Matches original */
+  color: #ccc;
+}
+
+.card-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.card-buttons button {
+  padding: 6px 12px;
+  font-size: 13px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.play-btn {
+  background-color: #e50914;
+  color: white;
+}
+
+.details-btn {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+
+
+
+/* Responsive Design  */
+
+@media (max-width: 768px) {
+  .card-list .card {
+    width: 160px;
+  }
+  .card-list .card img {
+    width: 160px;
+    height: 90px;
+  }
+  .card-title h3 {
+    font-size: 12px;
+  }
+  .card-overlay h3 {
+    font-size: 14px;
+  }
+  .card-overlay p {
+    font-size: 12px;
+  }
+}
