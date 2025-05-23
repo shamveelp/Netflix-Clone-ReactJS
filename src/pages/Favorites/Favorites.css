@@ -1,0 +1,133 @@
+/* src/pages/Favorites/Favorites.css */
+.favorites {
+  background-color: #141414; /* Netflix dark background */
+  color: #fff;
+  min-height: 100vh;
+}
+
+.favorites-content {
+  padding: 80px 20px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.favorites-content h1 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+.no-favorites {
+  font-size: 1.2rem;
+  text-align: center;
+  color: #999;
+}
+
+.favorites-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.favorite-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  background-color: #222;
+  transition: transform 0.3s ease;
+}
+
+.favorite-card:hover {
+  transform: scale(1.05);
+}
+
+.favorite-poster {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+}
+
+.favorite-info {
+  padding: 10px;
+}
+
+.favorite-info h3 {
+  font-size: 1.1rem;
+  margin: 0 0 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.remove-btn {
+  background-color: #e50914; /* Netflix red */
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.3s ease;
+}
+
+.remove-btn:hover {
+  background-color: #b20710;
+}
+
+.favorites-spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  color: #fff;
+  font-size: 1.5rem;
+}
+
+.favorite-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .favorites-content {
+    padding: 70px 15px 15px;
+  }
+
+  .favorites-content h1 {
+    font-size: 1.5rem;
+  }
+
+  .favorites-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 15px;
+  }
+
+  .favorite-poster {
+    height: 220px;
+  }
+
+  .favorite-info h3 {
+    font-size: 1rem;
+  }
+
+  .remove-btn {
+    padding: 6px 10px;
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .favorites-grid {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 10px;
+  }
+
+  .favorite-poster {
+    height: 180px;
+  }
+
+  .favorite-info h3 {
+    font-size: 0.9rem;
+  }
+}

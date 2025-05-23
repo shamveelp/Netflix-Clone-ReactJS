@@ -1,150 +1,267 @@
 .title-cards {
-  margin-top: 50px;
-  margin-bottom: 30px;
+    margin-top: 50px;
+    margin-bottom: 30px;
 }
 
 .title-cards h2 {
-  margin-bottom: 8px;
+    margin-bottom: 8px;
+    font-size: 24px;
 }
 
 .card-list {
-  display: flex;
-  gap: 15px; /* Increased gap for spacing */
-  overflow-x: scroll;
-  padding: 10px 0; /* Padding to prevent edge clipping */
+    display: flex;
+    gap: 15px;
+    overflow-x: scroll;
+    padding: 10px 0;
 }
 
 .card-list::-webkit-scrollbar {
-  display: none;
+    display: none;
 }
 
 .card-list .card {
-  position: relative;
-  width: 240px; /* Fixed width */
-  flex-shrink: 0; /* Prevent cards from shrinking */
-  transition: transform 0.3s ease, z-index 0.3s ease;
-  z-index: 1;
+    position: relative;
+    width: 240px;
+    flex-shrink: 0;
+    transition: transform 0.3s ease, z-index 0.3s ease;
+    z-index: 1;
 }
 
 .card-list .card:hover {
-  transform: scale(1.15) translateY(-10px); /* Smaller scale + lift to avoid congestion */
-  z-index: 10; /* Ensure hovered card is on top */
+    transform: scale(1.15) translateY(-10px);
+    z-index: 10;
 }
 
 .card-list .card img {
-  width: 240px;
-  height: 135px; /* Standard height */
-  object-fit: cover; /* Ensure images fit nicely */
-  border-radius: 4px;
-  cursor: pointer;
-  display: block;
+    width: 240px;
+    height: 135px;
+    object-fit: cover;
+    border-radius: 4px;
+    cursor: pointer;
+    display: block;
 }
 
-/* Always-visible title styling */
 .card-title {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  padding: 8px 10px;
-  background: rgba(0, 0, 0, 0.6); /* Semi-transparent for readability */
-  color: white;
-  border-bottom-left-radius: 4px;
-  border-bottom-right-radius: 4px;
-  transition: opacity 0.3s ease; /* Smooth hide on hover */
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 8px 10px;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    transition: opacity 0.3s ease;
 }
 
-/* Hide card-title on hover */
 .card:hover .card-title {
-  opacity: 0;
+    opacity: 0;
 }
 
 .card-title h3 {
-  margin: 0;
-  font-size: 14px; /* Smaller font for fit */
-  font-weight: bold;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis; /* Handle long titles */
+    margin: 0;
+    font-size: 14px;
+    font-weight: bold;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
-/* Hover overlay styling (matches original) */
 .card-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.35); /* Matches original */
-  color: white;
-  opacity: 0;
-  padding: 15px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  border-radius: 4px;
-  transition: opacity 0.3s ease;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.35);
+    color: white;
+    opacity: 0;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    border-radius: 4px;
+    transition: opacity 0.3s ease;
 }
 
 .card:hover .card-overlay {
-  opacity: 1;
+    opacity: 1;
 }
 
 .card-overlay h3 {
-  margin: 0;
-  font-size: 16px; /* Matches original */
-  font-weight: bold;
+    margin: 0;
+    font-size: 16px;
+    font-weight: bold;
 }
 
 .card-overlay p {
-  margin: 5px 0 10px;
-  font-size: 14px; /* Matches original */
-  color: #ccc;
+    margin: 5px 0 10px;
+    font-size: 14px;
+    color: #ccc;
 }
 
 .card-buttons {
-  display: flex;
-  gap: 10px;
+    display: flex;
+    gap: 10px;
 }
 
 .card-buttons button {
-  padding: 6px 12px;
-  font-size: 13px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
+    padding: 6px 12px;
+    font-size: 13px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
 }
 
 .play-btn {
-  background-color: #e50914;
-  color: white;
+    background-color: #e50914;
+    color: white;
 }
 
 .details-btn {
-  background-color: rgba(255, 255, 255, 0.2);
-  color: white;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
 }
 
-
-
-
-/* Responsive Design  */
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .title-cards {
+        margin-top: 40px;
+        margin-bottom: 25px;
+    }
+    .title-cards h2 {
+        font-size: 22px;
+    }
+    .card-list .card {
+        width: 200px;
+    }
+    .card-list .card img {
+        width: 200px;
+        height: 112px; /* Maintain aspect ratio (16:9) */
+    }
+}
 
 @media (max-width: 768px) {
-  .card-list .card {
-    width: 160px;
-  }
-  .card-list .card img {
-    width: 160px;
-    height: 90px;
-  }
-  .card-title h3 {
-    font-size: 12px;
-  }
-  .card-overlay h3 {
-    font-size: 14px;
-  }
-  .card-overlay p {
-    font-size: 12px;
-  }
+    .title-cards {
+        margin-top: 30px;
+        margin-bottom: 20px;
+    }
+    .title-cards h2 {
+        font-size: 20px;
+    }
+    .card-list .card {
+        width: 160px;
+    }
+    .card-list .card img {
+        width: 160px;
+        height: 90px;
+    }
+    .card-title h3 {
+        font-size: 12px;
+    }
+    .card-overlay h3 {
+        font-size: 14px;
+    }
+    .card-overlay p {
+        font-size: 12px;
+        margin: 3px 0 8px;
+    }
+    .card-buttons button {
+        padding: 5px 10px;
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 500px) {
+    .title-cards {
+        margin-top: 20px;
+        margin-bottom: 15px;
+    }
+    .title-cards h2 {
+        font-size: 18px;
+    }
+    .card-list {
+        gap: 10px;
+        padding: 8px 0;
+    }
+    .card-list .card {
+        width: 120px;
+    }
+    .card-list .card img {
+        width: 120px;
+        height: 67px; /* Maintain 16:9 aspect ratio */
+    }
+    .card-title h3 {
+        font-size: 11px;
+    }
+    .card-overlay {
+        padding: 10px;
+    }
+    .card-overlay h3 {
+        font-size: 12px;
+    }
+    .card-overlay p {
+        font-size: 11px;
+        margin: 2px 0 6px;
+    }
+    .card-buttons {
+        gap: 8px;
+    }
+    .card-buttons button {
+        padding: 4px 8px;
+        font-size: 11px;
+    }
+}
+
+@media (max-width: 320px) {
+    .title-cards {
+        margin-top: 15px;
+        margin-bottom: 10px;
+    }
+    .title-cards h2 {
+        font-size: 16px;
+    }
+    .card-list .card {
+        width: 100px;
+    }
+    .card-list .card img {
+        width: 100px;
+        height: 56px;
+    }
+    .card-title h3 {
+        font-size: 10px;
+    }
+    .card-overlay {
+        padding: 8px;
+    }
+    .card-overlay h3 {
+        font-size: 11px;
+    }
+    .card-overlay p {
+        font-size: 10px;
+        margin: 2px 0 5px;
+    }
+    .card-buttons {
+        gap: 6px;
+    }
+    .card-buttons button {
+        padding: 3px 6px;
+        font-size: 10px;
+    }
+}
+
+/* Touch device support for card hover */
+@media (hover: none) {
+    .card:hover .card-title {
+        opacity: 1; /* Keep title visible on touch devices */
+    }
+    .card:hover .card-overlay {
+        opacity: 0; /* Disable overlay on touch by default */
+    }
+    .card:active .card-overlay {
+        opacity: 1; /* Show overlay on tap */
+    }
+    .card:active {
+        transform: scale(1.1) translateY(-5px); /* Reduced scale for touch */
+    }
 }

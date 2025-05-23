@@ -7,6 +7,7 @@ import hero_title from '../../assets/hero_title.png'
 import play_icon from '../../assets/play_icon.png'
 import info_icon from '../../assets/info_icon.png'
 import TitleCards from '../../components/TitleCards/TitleCards'
+import { Link } from 'react-router-dom'
 
 const Home = () => {
   return (
@@ -22,10 +23,10 @@ const Home = () => {
             the city from an immortal enemy.
           </p>
           <div className="hero-btns">
-            <button className='btn'>
+            <Link to={`/player/950387`} ><button className='btn'>
               <img src={play_icon} alt="" />
               Play
-            </button>
+            </button></Link>
             <button className='btn dark-btn'>
               <img src={info_icon} alt="" />
               More Info

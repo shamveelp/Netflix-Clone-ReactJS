@@ -1,6 +1,7 @@
 import React, {useRef, useEffect, useState} from 'react'
 import './TitleCards.css'
 import cards_data from '../../assets/cards/Cards_data.js'
+import { Link } from 'react-router-dom'
 
 
 
@@ -78,8 +79,8 @@ const TitleCards = ({title, category}) => {
             <h3>{card.original_title}</h3>
             <p>{card.release_date.split("-")[0]} • {genreMap[card.genre_ids[0]]}</p>
             <div className="card-buttons">
-              <button className="play-btn">▶ Play</button>
-              <button className="details-btn">ℹ Details</button>
+              <Link to={`/player/${card.id}`} ><button className="play-btn">▶ Play</button></Link>
+              <Link to={`/movies/${card.id}`}><button className="details-btn">ℹ Details</button></Link>
             </div>
           </div>
         </div>
