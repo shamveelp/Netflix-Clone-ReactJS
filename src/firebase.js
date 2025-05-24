@@ -43,6 +43,7 @@ const signUp = async (name, email, password) => {
         });
         console.log('User added to Firestore:', { uid: user.uid, name, email });
         toast.success('Signed up successfully!');
+        window.location.reload();
     } catch (error) {
         console.error('SignUp Error:', error);
         toast.error(error.code.split('/')[1].split('-').join(' '));
@@ -54,14 +55,24 @@ const login = async (email, password) => {
         const res = await signInWithEmailAndPassword(auth, email, password);
         console.log('Login successful:', res.user);
         toast.success('Logged in successfully!');
+        window.location.reload();
     } catch (error) {
         console.error('Login Error:', error);
         toast.error(error.code.split('/')[1].split('-').join(' '));     
     }
 };
 
-const logout = () => {
-    signOut(auth);
+// src/firebase.js
+const logout = async () => {
+  try {
+    await signOut(auth);
+    window.location.reload();
+    toast.success('Logged out successfully!');
+    console.log('User signed out successfully');
+  } catch (error) {
+    console.error('Logout Error:', error);
+    toast.error('Failed to sign out');
+  }
 };
 
 const addToFavorites = async (userId, movie) => {

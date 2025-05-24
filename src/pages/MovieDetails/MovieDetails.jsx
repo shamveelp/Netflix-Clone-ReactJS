@@ -60,6 +60,8 @@ const MovieDetails = () => {
     fetchMovieDetails();
   }, [id]);
 
+  
+
   const handleAddToFavorites = () => {
     if (!currentUser) {
       toast.error('Please log in to add to favorites');

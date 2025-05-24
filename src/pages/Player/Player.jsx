@@ -26,18 +26,53 @@ const Player = () => {
   }
 };
 
-  useEffect(() => {
-  fetch(`https://api.themoviedb.org/3/movie/${id}/videos?language=en-US`, options)
-    .then(res => res.json())
-    .then(res => {
-      const trailer = res.results.find(video => video.type === "Trailer");
+//   useEffect(() => {
+//   fetch(`https://api.themoviedb.org/3/movie/${id}/videos?language=en-US`, options)
+//     .then(res => res.json())
+//     .then(res => {
+//       const trailer = res.results.find(video => video.type === "Trailer");
+//       if (trailer) {
+//         setApiData(trailer);
+//       } else {
+//         console.warn("Trailer not found.");
+//       }
+//     })
+//     .catch(err => console.error(err));
+// }, [id]);
+
+useEffect(() => {
+  if (!id) return;
+
+  const fetchVideos = async () => {
+    try {
+      // Try fetching movie videos first
+      let res = await fetch(`https://api.themoviedb.org/3/movie/${id}/videos?language=en-US`, options);
+      let data = await res.json();
+      let trailer = data.results?.find(video => video.type === "Trailer");
+
+      // If not found, try fetching series (tv) videos
+      if (!trailer) {
+        res = await fetch(`https://api.themoviedb.org/3/tv/${id}/videos?language=en-US`, options);
+        data = await res.json();
+        trailer = data.results?.find(video => video.type === "Trailer");
+      }
+
       if (trailer) {
         setApiData(trailer);
       } else {
-        console.warn("Trailer not found.");
+        setApiData({
+          name: "Trailer not found",
+          key: "",
+          published_at: "",
+          type: "",
+        });
       }
-    })
-    .catch(err => console.error(err));
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  fetchVideos();
 }, [id]);
 
 

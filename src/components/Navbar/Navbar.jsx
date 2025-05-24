@@ -1,4 +1,3 @@
-// src/components/Navbar.js
 import React, { useEffect, useRef, useState } from 'react';
 import './Navbar.css';
 import logo from '../../assets/logo.png';
@@ -49,12 +48,16 @@ const Navbar = () => {
 
       try {
         const response = await fetch(
-          `https://api.themoviedb.org/3/search/movie?query=${encodeURIComponent(searchQuery)}&language=en-US&page=1`,
+          `https://api.themoviedb.org/3/search/multi?query=${encodeURIComponent(searchQuery)}&language=en-US&page=1`,
           options
         );
         const data = await response.json();
-        setSearchResults(data.results.slice(0, 5)); // Limit to 5 results
-        console.log('Search Results:', data.results);
+        // Filter results to include only movies and TV shows, limit to 5
+        const filteredResults = data.results
+          .filter((item) => item.media_type === 'movie' || item.media_type === 'tv')
+          .slice(0, 5);
+        setSearchResults(filteredResults);
+        console.log('Search Results:', filteredResults);
       } catch (error) {
         console.error('Error fetching search results:', error);
       }
@@ -89,7 +92,7 @@ const Navbar = () => {
             <Link className="links" to="/">Home</Link>
           </li>
           <li>
-            <Link className="links" to="/movies">TV Shows</Link>
+            <Link className="links">TV Shows</Link>
           </li>
           <li>New & Popular</li>
           <li>
@@ -112,31 +115,41 @@ const Navbar = () => {
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search movies..."
+                placeholder="Search movies or TV shows..."
                 className="search-input"
                 autoFocus
               />
               {searchResults.length > 0 && (
                 <div className="search-results">
-                  {searchResults.map((movie) => (
+                  {searchResults.map((item) => (
                     <Link
-                      key={movie.id}
-                      to={`/movies/${movie.id}`}
+                      key={`${item.media_type}-${item.id}`}
+                      to={`/${item.media_type === 'movie' ? 'movies' : 'tv-shows'}/${item.id}`}
                       className="search-result-item"
                       onClick={toggleSearch} // Close search after clicking
                     >
                       <img
                         src={
-                          movie.poster_path
-                            ? `https://image.tmdb.org/t/p/w92${movie.poster_path}`
+                          item.poster_path
+                            ? `https://image.tmdb.org/t/p/w92${item.poster_path}`
                             : 'https://via.placeholder.com/92x138'
                         }
-                        alt={movie.title}
+                        alt={item.title || item.name}
                         className="search-result-poster"
                       />
                       <div className="search-result-info">
-                        <h4>{movie.title}</h4>
-                        <p>{movie.release_date ? movie.release_date.split('-')[0] : 'N/A'}</p>
+                        <h4>{item.title || item.name}</h4>
+                        <p>
+                          {item.media_type === 'movie'
+                            ? item.release_date
+                              ? item.release_date.split('-')[0]
+                              : 'N/A'
+                            : item.first_air_date
+                              ? item.first_air_date.split('-')[0]
+                              : 'N/A'}
+                          {' '}
+                          ({item.media_type === 'movie' ? 'Movie' : 'TV Show'})
+                        </p>
                       </div>
                     </Link>
                   ))}
@@ -154,7 +167,7 @@ const Navbar = () => {
             <ul>
               <li>Manage Profiles</li>
               <li>
-                <Link className='links' to="/favorites">Favorites</Link>
+                <Link className="links" to="/favorites">Favorites</Link>
               </li>
               <li onClick={() => logout()}>Sign Out</li>
             </ul>
